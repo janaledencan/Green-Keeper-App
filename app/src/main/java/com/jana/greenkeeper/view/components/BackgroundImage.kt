@@ -15,7 +15,7 @@ fun BackgroundImage(modifier: Modifier) {
             painter = painterResource(id = R.drawable.gk_background_img),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            alpha = 0.6F
+            modifier = modifier
         )
     }
 }

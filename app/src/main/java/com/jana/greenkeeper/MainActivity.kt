@@ -30,6 +30,8 @@ import com.jana.greenkeeper.viewmodel.AuthenticationViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.jana.greenkeeper.view.EntryScreen
+import com.jana.greenkeeper.view.MyPlantsScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +50,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
             val navController = rememberNavController()
-            NavHost(navController = navController, startDestination = "login_screen") {
+            NavHost(navController = navController, startDestination = "entry_screen") {
+                composable("entry_screen") {
+                    EntryScreen(
+                        navController = navController
+                    )
+                }
                 composable("login_screen") {
                     LoginScreen(
                         viewModel = AuthenticationViewModel(),
@@ -63,6 +70,10 @@ class MainActivity : ComponentActivity() {
                         navController = navController
                     )
                 }
+                composable("main_plants_screen") {
+                    MyPlantsScreen(navController = navController)
+                }
+
             }
         }
     }

@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -30,7 +31,7 @@ fun RegistrationScreen(viewModel: AuthenticationViewModel, context: Context, nav
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    BackgroundImage(modifier = Modifier)
+    BackgroundImage(modifier = Modifier.alpha(0.8F))
     Column(
         modifier = Modifier .fillMaxSize() .padding(16.dp),
         verticalArrangement = Arrangement.Center,
