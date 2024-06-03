@@ -27,13 +27,15 @@ import androidx.compose.ui.unit.dp
 import com.jana.greenkeeper.view.LoginScreen
 import com.jana.greenkeeper.view.RegistrationScreen
 import com.jana.greenkeeper.viewmodel.AuthenticationViewModel
-
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            val context = LocalContext.current
             GreenKeeperTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -41,9 +43,25 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //val currentUser = FirebaseAuth.getInstance().currentUser
-                    val context = LocalContext.current
-                    LoginScreen(viewModel = AuthenticationViewModel(), context = context)
+                    //LoginScreen(viewModel = AuthenticationViewModel(), context = context)
                     //RegistrationScreen(viewModel = AuthenticationViewModel(), context = context)
+                }
+            }
+            val navController = rememberNavController()
+            NavHost(navController = navController, startDestination = "login_screen") {
+                composable("login_screen") {
+                    LoginScreen(
+                        viewModel = AuthenticationViewModel(),
+                        context = context,
+                        navController = navController
+                    )
+                }
+                composable("registration_screen") {
+                    RegistrationScreen(
+                        viewModel = AuthenticationViewModel(),
+                        context = context,
+                        navController = navController
+                    )
                 }
             }
         }
