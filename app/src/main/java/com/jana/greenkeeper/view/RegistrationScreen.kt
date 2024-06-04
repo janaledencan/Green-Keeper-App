@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -22,8 +23,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jana.greenkeeper.R
 import com.jana.greenkeeper.view.components.BackgroundImage
@@ -37,9 +40,20 @@ fun RegistrationScreen(viewModel: AuthenticationViewModel, context: Context, nav
     BackgroundImage(modifier = Modifier.alpha(0.8F))
     Column(
         modifier = Modifier .fillMaxSize() .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(112.dp))
+        Text(
+            text = "Get Started",
+            fontSize = 32.sp,
+            fontWeight = FontWeight.Bold,
+        )
+        Text(
+            text = "by creating a free account",
+            fontSize = 16.sp,
+        )
+        Spacer(modifier = Modifier.height(32.dp))
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -52,9 +66,10 @@ fun RegistrationScreen(viewModel: AuthenticationViewModel, context: Context, nav
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation()
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(80.dp))
         Button(
             onClick = { viewModel.register(context, email, password) },
+            modifier = Modifier.width(200.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.custom_green))
         ) { Text("Register") }
         Spacer(modifier = Modifier.height(8.dp))

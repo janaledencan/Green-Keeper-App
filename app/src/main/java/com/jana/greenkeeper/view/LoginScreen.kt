@@ -65,7 +65,7 @@ fun LoginScreen(viewModel: AuthenticationViewModel, context: Context, navControl
             text = "sign in to access your account",
             fontSize = 16.sp,
         )
-        Spacer(modifier = Modifier.height(32.dp)) //32
+        Spacer(modifier = Modifier.height(32.dp))
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
