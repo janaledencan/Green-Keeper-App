@@ -30,6 +30,7 @@ import com.jana.greenkeeper.viewmodel.AuthenticationViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.jana.greenkeeper.view.ApiPlantScreen
 import com.jana.greenkeeper.view.EntryScreen
 import com.jana.greenkeeper.view.MyPlantsScreen
 
@@ -72,6 +73,9 @@ class MainActivity : ComponentActivity() {
                 }
                 composable("main_plants_screen") {
                     MyPlantsScreen(navController = navController)
+                }
+                composable("api_plant_screen") {
+                    ApiPlantScreen(navController = navController)
                 }
 
             }

@@ -54,7 +54,7 @@ fun EntryScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(128.dp))
         Text(
             text = "Green Keeper",
-            fontSize = 32.sp,
+            fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             style = TextStyle(
                 fontSize = 24.sp,
