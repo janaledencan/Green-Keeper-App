@@ -102,7 +102,7 @@ fun LoginScreen(viewModel: AuthenticationViewModel, context: Context, navControl
 @Composable
 fun LoginScreenPreview() {
     GreenKeeperTheme {
-        LoginScreen(viewModel = AuthenticationViewModel(), LocalContext.current, navController = NavController(
+        LoginScreen(viewModel = AuthenticationViewModel(LocalContext.current), LocalContext.current, navController = NavController(
             LocalContext.current)
         )
     }

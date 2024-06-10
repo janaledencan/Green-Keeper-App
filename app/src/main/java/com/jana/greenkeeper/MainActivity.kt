@@ -34,23 +34,24 @@ import com.jana.greenkeeper.view.ApiPlantScreen
 import com.jana.greenkeeper.view.EntryScreen
 import com.jana.greenkeeper.view.MyPlantsScreen
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val context = LocalContext.current
+            val navController = rememberNavController()
+            val authViewModel = AuthenticationViewModel(context = context)
+
             GreenKeeperTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //val currentUser = FirebaseAuth.getInstance().currentUser
-                    //LoginScreen(viewModel = AuthenticationViewModel(), context = context)
-                    //RegistrationScreen(viewModel = AuthenticationViewModel(), context = context)
+                    MainScreen(authViewModel = authViewModel, navController = navController)
                 }
             }
-            val navController = rememberNavController()
+
             NavHost(navController = navController, startDestination = "entry_screen") {
                 composable("entry_screen") {
                     EntryScreen(
@@ -59,27 +60,25 @@ class MainActivity : ComponentActivity() {
                 }
                 composable("login_screen") {
                     LoginScreen(
-                        viewModel = AuthenticationViewModel(),
+                        viewModel = authViewModel, // Use the shared AuthenticationViewModel
                         context = context,
                         navController = navController
                     )
                 }
                 composable("registration_screen") {
                     RegistrationScreen(
-                        viewModel = AuthenticationViewModel(),
+                        viewModel = authViewModel, // Use the shared AuthenticationViewModel
                         context = context,
                         navController = navController
                     )
                 }
                 composable("main_plants_screen") {
-                    MyPlantsScreen(navController = navController, authViewModel = AuthenticationViewModel())
+                    MyPlantsScreen(navController = navController, authViewModel = authViewModel)
                 }
                 composable("api_plant_screen") {
                     ApiPlantScreen(navController = navController)
                 }
-
             }
         }
     }
 }
-

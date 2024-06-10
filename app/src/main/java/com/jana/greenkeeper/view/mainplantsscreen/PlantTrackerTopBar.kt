@@ -27,17 +27,21 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jana.greenkeeper.R
+import com.jana.greenkeeper.model.PlantColor
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PlantTrackerTopAppBar(isMain: Boolean, onNavigationClick: () -> Unit ,modifier: Modifier = Modifier) {
+fun PlantTrackerTopAppBar(isMain: Boolean, onNavigationClick: () -> Unit ,  onLogoutClick: () -> Unit ,modifier: Modifier = Modifier) {
 
 
    if(isMain) {
@@ -54,6 +58,14 @@ fun PlantTrackerTopAppBar(isMain: Boolean, onNavigationClick: () -> Unit ,modifi
                    style = MaterialTheme.typography.titleLarge,
                    color = MaterialTheme.colorScheme.onBackground
                )
+           },
+           navigationIcon = {
+               IconButton(onClick = onLogoutClick) { // Add the logout button
+                   Icon(
+                       painter = painterResource(R.drawable.logout_24dp),
+                       contentDescription = "Logout",
+                   )
+               }
            },
            actions = {
                IconButton(onClick = onNavigationClick) {

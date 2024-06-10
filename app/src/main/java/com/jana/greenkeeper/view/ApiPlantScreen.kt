@@ -45,7 +45,8 @@ fun ApiPlantScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            PlantTrackerTopAppBar(isMain = false, onNavigationClick = { navController.navigate("main_plants_screen") })
+            PlantTrackerTopAppBar(isMain = false, onNavigationClick = { navController.navigate("main_plants_screen") },
+                onLogoutClick = {})
         }
     ) { paddingValues ->
         Column(

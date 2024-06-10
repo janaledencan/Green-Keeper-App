@@ -63,7 +63,18 @@ fun MyPlantsScreen(
     ) {
         Scaffold(
             topBar = {
-                PlantTrackerTopAppBar(isMain = true, onNavigationClick = { navController.navigate("api_plant_screen") })
+                PlantTrackerTopAppBar(
+                    isMain = true,
+                    onNavigationClick = { navController.navigate("api_plant_screen") },
+                    onLogoutClick = {
+                        authViewModel.logout()
+                        navController.navigate("login_screen") {
+                            popUpTo(navController.graph.startDestinationId) {
+                                inclusive = true
+                            }
+                        }
+                    }
+                )
             },
             floatingActionButton = {
                 PlantTrackerFAB(
@@ -93,7 +104,8 @@ fun MyPlantsScreen(
 @Composable
 fun MyPlantsScreenPreview() {
     GreenKeeperTheme {
-        MyPlantsScreen(navController = NavController(LocalContext.current), authViewModel= AuthenticationViewModel(),
+        MyPlantsScreen(navController = NavController(LocalContext.current), authViewModel= AuthenticationViewModel(
+            LocalContext.current),
         )
     }
 }
