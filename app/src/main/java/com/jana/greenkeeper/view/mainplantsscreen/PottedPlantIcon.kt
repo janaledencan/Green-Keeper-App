@@ -25,15 +25,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import com.jana.greenkeeper.R
+import com.jana.greenkeeper.model.PlantColor
 
 
-/**
- * Custom icon for juice which is able to adjust for Dark Mode.
- * contentDescription for Box is added through semantics to support better accessibility.
- * Icons' contentDescription are nullified as its meaning has been explained by
- * the box's contentDescription
- */
-/*
 @Composable
 fun PottedPlantIcon(color: String, modifier: Modifier = Modifier) {
     val plantIconContentDescription = stringResource(R.string.plant_color, color)
@@ -43,7 +37,7 @@ fun PottedPlantIcon(color: String, modifier: Modifier = Modifier) {
         }
     ) {
         Icon(
-            painter = painterResource(R.drawable.potted_plant_24px),
+            painter = painterResource(R.drawable.potted_plant_24),
             contentDescription = null,
             tint = PlantColor.valueOf(color).color,
             modifier = Modifier.align(Alignment.Center)
@@ -51,4 +45,3 @@ fun PottedPlantIcon(color: String, modifier: Modifier = Modifier) {
         //Icon(painter = painterResource(R.drawable.juice_clear_icon), contentDescription = null)
     }
 }
-*/

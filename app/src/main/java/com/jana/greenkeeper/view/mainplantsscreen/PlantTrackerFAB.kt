@@ -24,7 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.jana.greenkeeper.R
 
-/*
+
 @Composable
 fun PlantTrackerFAB(
     onClick: () -> Unit,
@@ -40,4 +40,3 @@ fun PlantTrackerFAB(
         )
     }
 }
-*/

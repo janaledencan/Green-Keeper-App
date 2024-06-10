@@ -42,10 +42,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.jana.greenkeeper.R
+import com.jana.greenkeeper.model.Plant
+import com.jana.greenkeeper.model.PlantColor
+import com.jana.greenkeeper.viewmodel.PlantTrackerViewModel
 //R, .data.Plant, .data.PlantColor, .PlantTrackerViewModel
 import java.util.Locale
 
-/*
+
 private fun findColorIndex(color: String): Int {
     val plantColor = PlantColor.valueOf(color)
     return PlantColor.values().indexOf(plantColor)
@@ -61,7 +65,7 @@ fun EntryBottomSheet(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
-    val juice by plantTrackerViewModel.currentPlantStream.collectAsState()
+    val plant by plantTrackerViewModel.currentPlantStream.collectAsState()
 
     BottomSheetScaffold(
         modifier = modifier,
@@ -71,7 +75,7 @@ fun EntryBottomSheet(
             Column {
                 SheetHeader()
                 SheetForm(
-                    plant = juice,
+                    plant = plant,
                     onUpdatePlant = plantTrackerViewModel::updateCurrentPlant,
                     onCancel = onCancel,
                     onSubmit = onSubmit
@@ -201,4 +205,3 @@ fun InputRow(
         }
     }
 }
-*/

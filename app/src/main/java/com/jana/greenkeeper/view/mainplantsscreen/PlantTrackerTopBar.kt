@@ -26,9 +26,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.jana.greenkeeper.R
 
-/*
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlantTrackerTopAppBar(modifier: Modifier = Modifier) {
@@ -40,7 +41,7 @@ fun PlantTrackerTopAppBar(modifier: Modifier = Modifier) {
         title = {
             Text(
                 text = stringResource(R.string.app_name),
-                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+                modifier = Modifier.padding(horizontal = 16.dp),
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onBackground
@@ -48,4 +49,3 @@ fun PlantTrackerTopAppBar(modifier: Modifier = Modifier) {
         }
     )
 }
-*/

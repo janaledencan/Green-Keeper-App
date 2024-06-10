@@ -36,8 +36,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jana.greenkeeper.R
+import com.jana.greenkeeper.model.Plant
 
-/*
+
 @Composable
 fun PlantTrackerList(
     plants: List<Plant>,
@@ -49,8 +51,8 @@ fun PlantTrackerList(
         modifier = modifier,
         contentPadding = PaddingValues(vertical = 8.dp),
     ) {
-        items(items = plants) { juice ->
-            PlantTrackerListItem(juice, onDelete, onUpdate)
+        items(items = plants) { plant ->
+            PlantTrackerListItem(plant, onDelete, onUpdate)
         }
     }
 }
@@ -122,4 +124,3 @@ fun JuiceTrackerListPreview() {
             onUpdate = {})
     }
 }
-*/

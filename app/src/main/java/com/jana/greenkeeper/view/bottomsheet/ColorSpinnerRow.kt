@@ -10,8 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.viewinterop.AndroidView
 import com.jana.greenkeeper.R
+import com.jana.greenkeeper.model.PlantColor
 
-/*
+
 class SpinnerAdapter(val onColorChange: (Int) -> Unit): AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         onColorChange(position)
@@ -54,4 +55,3 @@ fun ColorSpinnerRow(
     }
 }
 
-*/

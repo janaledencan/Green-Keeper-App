@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">GreenKeeper</string>
+
+    <string name="delete">Delete</string>
+    <string name="plant_name">Plant Name</string>
+    <string name="plant_description">Description</string>
+    <string name="save">Save</string>
+    <string name="color">Color</string>
+    <string name="add_plant">Add plant</string>
+    <string name="bottom_sheet_headline">Types of plants</string>
+    <string name="plant_color">%s plant</string>
+
+
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="green">Green</string>
+    <string name="cyan">Cyan</string>
+    <string name="yellow">Yellow</string>
+    <string name="magenta">Magenta</string>
+    <string name="orange">Orange</string>
 </resources>
