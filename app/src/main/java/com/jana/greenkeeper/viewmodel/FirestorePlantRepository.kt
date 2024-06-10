@@ -8,39 +8,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 
-/*
-class FirestorePlantRepository {
-
-    private val db = FirebaseFirestore.getInstance()
-
-    fun getAllPlants(): Flow<List<Plant>> = callbackFlow {
-        val listener = db.collection("myPlants")
-            .addSnapshotListener { snapshot, e ->
-                if (e != null) {
-                    close(e)
-                    return@addSnapshotListener
-                }
-
-                val plants = snapshot?.toObjects(Plant::class.java) ?: emptyList()
-                trySend(plants)
-            }
-        //korutine
-        awaitClose { listener.remove() }
-    }
-
-    suspend fun addPlant(plant: Plant) {
-        db.collection("myPlants").add(plant)
-    }
-
-    suspend fun updatePlant(plant: Plant) {
-        db.collection("myPlants").document(plant.id.toString()).set(plant)
-    }
-
-    suspend fun deletePlant(plant: Plant) {
-        db.collection("myPlants").document(plant.id.toString()).delete()
-    }
-}
-*/
 class FirestorePlantRepository {
 
     private val firestore = FirebaseFirestore.getInstance()
@@ -53,7 +20,9 @@ class FirestorePlantRepository {
                 return@addSnapshotListener
             }
 
-            val plants = snapshot?.documents?.mapNotNull { it.toObject(Plant::class.java) } ?: emptyList()
+            val plants = snapshot?.documents?.mapNotNull {
+                it.toObject(Plant::class.java)?.copy(id = it.id) // Ensure id is set to the document ID
+            } ?: emptyList()
             trySend(plants)
         }
         awaitClose { listener.remove() }
@@ -61,15 +30,15 @@ class FirestorePlantRepository {
 
     suspend fun addPlant(plant: Plant) {
         val newPlantRef = plantCollection.document()
-        val newPlant = plant.copy(id = newPlantRef.id.hashCode()) // Hash the document ID for consistency
+        val newPlant = plant.copy(id = newPlantRef.id)
         newPlantRef.set(newPlant).await()
     }
 
     suspend fun updatePlant(plant: Plant) {
-        plantCollection.document(plant.id.toString()).set(plant).await()
+        plantCollection.document(plant.id).set(plant).await()
     }
 
     suspend fun deletePlant(plant: Plant) {
-        plantCollection.document(plant.id.toString()).delete().await()
+        plantCollection.document(plant.id).delete().await()
     }
 }

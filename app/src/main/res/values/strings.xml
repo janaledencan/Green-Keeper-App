@@ -9,6 +9,10 @@
     <string name="add_plant">Add plant</string>
     <string name="bottom_sheet_headline">Types of plants</string>
     <string name="plant_color">%s plant</string>
+    <string name="api_screen">API plant screen</string>
+    <string name="api_screen_title">Learn About ...</string>
+    <string name="main_screen_title">My Plants</string>
+
 
 
     <string name="red">Red</string>

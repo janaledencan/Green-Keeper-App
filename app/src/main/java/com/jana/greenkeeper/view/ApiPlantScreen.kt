@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jana.greenkeeper.ui.theme.GreenKeeperTheme
+import com.jana.greenkeeper.view.mainplantsscreen.PlantTrackerTopAppBar
 import com.jana.greenkeeper.viewmodel.SearchbarViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,13 +45,7 @@ fun ApiPlantScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            Spacer(modifier = Modifier.height(91.dp))
-            Text(
-                text = "Learn About ...",
-                fontSize = 32.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(start = 16.dp, top = 16.dp)
-            )
+            PlantTrackerTopAppBar(isMain = false, onNavigationClick = { navController.navigate("main_plants_screen") })
         }
     ) { paddingValues ->
         Column(

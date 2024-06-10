@@ -115,9 +115,9 @@ fun JuiceTrackerListPreview() {
     MaterialTheme {
         PlantTrackerList(
             plants = listOf(
-                Plant(1, "Mango", "Yummy!", "Yellow"),
-                Plant(2, "Orange", "Best plant", "Orange"),
-                Plant(3, "Grape", "Greenest of them all", "Magenta"),
+                Plant("1", "Mango", "Yummy!", "Yellow"),
+                Plant("2", "Orange", "Best plant", "Orange"),
+                Plant("3", "Grape", "Greenest of them all", "Magenta"),
 
             ),
             onDelete = {},

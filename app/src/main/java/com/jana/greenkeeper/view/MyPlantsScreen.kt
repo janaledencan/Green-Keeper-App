@@ -71,8 +71,6 @@ fun MyPlantsScreen(navController: NavController,
     val scope = rememberCoroutineScope()
     val trackerState by plantTrackerViewModel.plantListStream.collectAsState(emptyList())
 
-    Spacer(modifier = Modifier.height(10.dp))
-    ClickableText(text = AnnotatedString("Go to Api Screen"), onClick = {navController.navigate("api_plant_screen")})
 
     EntryBottomSheet(
         plantTrackerViewModel = plantTrackerViewModel,
@@ -93,7 +91,7 @@ fun MyPlantsScreen(navController: NavController,
     {
         Scaffold(
             topBar = {
-                PlantTrackerTopAppBar()
+                PlantTrackerTopAppBar(isMain = true, onNavigationClick = { navController.navigate("api_plant_screen") })
             },
             floatingActionButton = {
                 PlantTrackerFAB(
