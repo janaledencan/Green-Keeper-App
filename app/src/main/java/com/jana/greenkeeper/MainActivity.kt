@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
                     )
                 }
                 composable("main_plants_screen") {
-                    MyPlantsScreen(navController = navController)
+                    MyPlantsScreen(navController = navController, authViewModel = AuthenticationViewModel())
                 }
                 composable("api_plant_screen") {
                     ApiPlantScreen(navController = navController)

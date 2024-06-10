@@ -13,15 +13,15 @@ class FirestorePlantRepository {
     private val firestore = FirebaseFirestore.getInstance()
     private val plantCollection = firestore.collection("myPlants")
 
-    fun getAllPlants(): Flow<List<Plant>> = callbackFlow {
-        val listener = plantCollection.addSnapshotListener { snapshot, error ->
+    fun getAllPlants(userId: String): Flow<List<Plant>> = callbackFlow {
+        val listener = plantCollection.whereEqualTo("userId", userId).addSnapshotListener { snapshot, error ->
             if (error != null) {
                 close(error)
                 return@addSnapshotListener
             }
 
             val plants = snapshot?.documents?.mapNotNull {
-                it.toObject(Plant::class.java)?.copy(id = it.id) // Ensure id is set to the document ID
+                it.toObject(Plant::class.java)?.copy(id = it.id)
             } ?: emptyList()
             trySend(plants)
         }

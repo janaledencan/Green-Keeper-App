@@ -6,12 +6,23 @@ import com.jana.greenkeeper.R
 
 import com.jana.greenkeeper.ui.theme.Orange as OrangeColor
 
+/*
 data class Plant(
     val id: String = "",
     val name: String = "",
     val description: String = "",
     val color: String = ""
 )
+*/
+
+data class Plant(
+    val id: String = "",
+    val name: String = "",
+    val description: String = "",
+    val color: String = "Green",
+    val userId: String = "" // Add userId property
+)
+
 
 enum class PlantColor(val color: Color, @StringRes val label: Int) {
     Red(Color.Red, R.string.red),

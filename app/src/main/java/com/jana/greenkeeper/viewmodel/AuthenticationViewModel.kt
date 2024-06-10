@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseUser
 class AuthenticationViewModel {
 
     private var fAuthInstance: FirebaseAuth? = null
-    private var currentUser: FirebaseUser? = null
+    var currentUser: FirebaseUser? = null
     var isLoggedIn by mutableStateOf(false)
         private set
 

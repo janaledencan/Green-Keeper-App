@@ -6,20 +6,30 @@ import com.jana.greenkeeper.model.Plant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 
-class PlantTrackerViewModel : ViewModel() {
+class PlantTrackerViewModel(
+    private val authViewModel: AuthenticationViewModel
+) : ViewModel() {
 
     private val firestoreRepository = FirestorePlantRepository()
     private val emptyPlant = Plant(id = "", name = "", description = "", color = "Green")
     private val _currentPlantStream = MutableStateFlow(emptyPlant)
     val currentPlantStream: StateFlow<Plant> = _currentPlantStream
 
-    val plantListStream: Flow<List<Plant>> = firestoreRepository.getAllPlants()
+    val plantListStream: Flow<List<Plant>> = flow {
+        authViewModel.currentUser?.let { user ->
+            emitAll(firestoreRepository.getAllPlants(user.uid))
+        }
+    }
 
     fun addPlant(plant: Plant) = viewModelScope.launch {
-        firestoreRepository.addPlant(plant)
+        authViewModel.currentUser?.let { user ->
+            firestoreRepository.addPlant(plant.copy(userId = user.uid))
+        }
     }
 
     fun updateCurrentPlant(plant: Plant) {
@@ -32,10 +42,12 @@ class PlantTrackerViewModel : ViewModel() {
 
     fun savePlant() = viewModelScope.launch {
         val currentPlant = _currentPlantStream.value
-        if (currentPlant.id.isNotEmpty()) {
-            firestoreRepository.updatePlant(currentPlant)
-        } else {
-            firestoreRepository.addPlant(currentPlant.copy(id = "")) // Reset id for new plant
+        authViewModel.currentUser?.let { user ->
+            if (currentPlant.id.isNotEmpty()) {
+                firestoreRepository.updatePlant(currentPlant)
+            } else {
+                firestoreRepository.addPlant(currentPlant.copy(userId = user.uid))
+            }
         }
     }
 
