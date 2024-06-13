@@ -15,15 +15,9 @@ import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.jana.greenkeeper.ui.theme.GreenKeeperTheme
 import com.jana.greenkeeper.view.bottomsheet.EntryBottomSheet
 import com.jana.greenkeeper.view.mainplantsscreen.PlantTrackerFAB
 import com.jana.greenkeeper.view.mainplantsscreen.PlantTrackerList
@@ -32,26 +26,13 @@ import com.jana.greenkeeper.viewmodel.AuthenticationViewModel
 import com.jana.greenkeeper.viewmodel.NotificationViewModel
 import com.jana.greenkeeper.viewmodel.PlantTrackerViewModel
 import kotlinx.coroutines.launch
-
-
-
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.content.Context
-
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.jana.greenkeeper.view.bottomsheet.NotificationBottomSheet
 import com.jana.greenkeeper.view.mainplantsscreen.NotificationLeftFAB
-import kotlinx.coroutines.launch
-import java.util.*
+
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @RequiresApi(Build.VERSION_CODES.O)
@@ -115,20 +96,49 @@ fun MyPlantsScreen(
                 )
             },
             floatingActionButton = {
-                Column {
+                Row( modifier = Modifier.padding(start = 24.dp)) {
+                    Box(modifier = Modifier.fillMaxWidth()) {
+
+                        Spacer(modifier = Modifier.width(24.dp))
+                        NotificationLeftFAB(
+                            onClick = {
+                                scope.launch { leftBottomSheetScaffoldState.bottomSheetState.expand() }
+                            },
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .padding(16.dp)
+                        )
+
+                        PlantTrackerFAB(
+                            onClick = {
+                                plantTrackerViewModel.resetCurrentPlant()
+                                scope.launch { bottomSheetScaffoldState.bottomSheetState.expand() }
+                            },
+                            modifier = Modifier
+                                .align(Alignment.BottomEnd)
+                                .padding(16.dp)
+                        )
+                    }
+                }
+
+                /*Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                    ) {
+
+                    NotificationLeftFAB(
+                        onClick = {
+                            scope.launch { leftBottomSheetScaffoldState.bottomSheetState.expand() }
+                        }
+                    )
+                    Spacer(modifier = Modifier.width(24.dp))
                     PlantTrackerFAB(
                         onClick = {
                             plantTrackerViewModel.resetCurrentPlant()
                             scope.launch { bottomSheetScaffoldState.bottomSheetState.expand() }
                         }
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    NotificationLeftFAB(
-                        onClick = {
-                            scope.launch { leftBottomSheetScaffoldState.bottomSheetState.expand() }
-                        }
-                    )
-                }
+                }*/
             }
         ) { contentPadding ->
             Column(Modifier.padding(contentPadding)) {

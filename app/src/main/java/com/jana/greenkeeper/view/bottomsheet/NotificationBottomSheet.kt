@@ -115,7 +115,14 @@ fun NotificationBottomSheet(
                 negativeButton(text = "Cancel")
             }
         ) {
-            datepicker(initialDate = LocalDate.now(), title = "Pick a date") {
+            datepicker(
+                initialDate = LocalDate.now(),
+                title = "Pick a date",
+                allowedDateValidator = {
+                    (it.dayOfMonth - LocalDate.now().dayOfMonth) >= 0 &&
+                            (it.monthValue - LocalDate.now().monthValue) >= 0 &&
+                            (it.year - LocalDate.now().year) >= 0
+                }) {
                 pickerDate = it
             }
         }

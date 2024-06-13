@@ -89,7 +89,7 @@ fun ApiPlantScreen(apiViewModel: ApiViewModel, navController: NavController) {
                         },
                         colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.custom_green))
                     ) {
-                        Text("API call")
+                        Text("Search")
                     }
                 }
 
