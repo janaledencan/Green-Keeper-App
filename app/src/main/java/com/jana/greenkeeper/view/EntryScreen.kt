@@ -43,7 +43,7 @@ import com.jana.greenkeeper.viewmodel.AuthenticationViewModel
 @Composable
 fun EntryScreen(navController: NavController) {
 
-    BackgroundImage(modifier = Modifier.alpha(1.0F))
+    BackgroundImage(modifier = Modifier.alpha(1.0F).fillMaxSize())
     Column(
         modifier = Modifier
             .fillMaxSize()

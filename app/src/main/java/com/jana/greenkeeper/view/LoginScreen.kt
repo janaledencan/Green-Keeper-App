@@ -47,7 +47,7 @@ fun LoginScreen(viewModel: AuthenticationViewModel, context: Context, navControl
     var password by remember { mutableStateOf("") }
     val isLoggedIn by viewModel::isLoggedIn
 
-    BackgroundImage(modifier = Modifier.alpha(0.8F))
+    BackgroundImage(modifier = Modifier.alpha(0.8F).fillMaxSize())
     Column(
         modifier = Modifier
             .fillMaxSize()

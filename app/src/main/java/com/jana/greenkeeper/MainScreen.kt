@@ -13,7 +13,7 @@ fun MainScreen(authViewModel: AuthenticationViewModel, navController: NavHostCon
                 popUpTo(0) { inclusive = true } // Clear the back stack
             }
         } else {
-            navController.navigate("login_screen") {
+            navController.navigate("entry_screen") {
                 popUpTo(0) { inclusive = true } // Clear the back stack
             }
         }

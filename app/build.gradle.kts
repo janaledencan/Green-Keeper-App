@@ -21,6 +21,11 @@ android {
         }
     }
 
+    buildFeatures{
+        viewBinding = true
+        dataBinding = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -31,6 +36,7 @@ android {
         }
     }
     compileOptions {
+        var coreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -62,6 +68,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -74,4 +81,21 @@ dependencies {
 
     //Material Design 3
     implementation("androidx.compose.material3:material3:1.1.2")
+
+    //Retrofit i korutine
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
+
+
+    implementation ("androidx.compose.runtime:runtime-livedata:1.0.1")
+
+
+    implementation ("androidx.compose.material:material-icons-core:1.0.0")
+    implementation ("androidx.compose.material:material-icons-extended:1.0.0")
+    implementation ("com.google.accompanist:accompanist-insets:0.21.2-beta")
+
+    implementation ("io.github.vanpra.compose-material-dialogs:datetime:0.8.1-rc")
+    coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:1.1.6")
+
 }

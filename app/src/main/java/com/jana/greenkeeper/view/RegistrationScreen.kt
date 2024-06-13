@@ -37,7 +37,7 @@ fun RegistrationScreen(viewModel: AuthenticationViewModel, context: Context, nav
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    BackgroundImage(modifier = Modifier.alpha(0.8F))
+    BackgroundImage(modifier = Modifier.alpha(0.8F).fillMaxSize())
     Column(
         modifier = Modifier .fillMaxSize() .padding(16.dp),
         verticalArrangement = Arrangement.Top,
