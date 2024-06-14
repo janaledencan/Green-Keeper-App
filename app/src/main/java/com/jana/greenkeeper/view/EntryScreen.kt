@@ -1,6 +1,6 @@
 package com.jana.greenkeeper.view
 
-import android.content.Context
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,11 +12,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -29,7 +24,6 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +32,7 @@ import androidx.navigation.NavController
 import com.jana.greenkeeper.R
 import com.jana.greenkeeper.ui.theme.GreenKeeperTheme
 import com.jana.greenkeeper.view.components.BackgroundImage
-import com.jana.greenkeeper.viewmodel.AuthenticationViewModel
+
 
 @Composable
 fun EntryScreen(navController: NavController) {
@@ -59,7 +53,7 @@ fun EntryScreen(navController: NavController) {
             style = TextStyle(
                 fontSize = 24.sp,
                 shadow = Shadow(
-                    color = Color(R.color.custom_green),
+                    color = colorResource(R.color.custom_green),
                     offset = Offset(5.0f, 10.0f),
                     blurRadius = 3f
                 )

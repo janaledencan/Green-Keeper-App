@@ -48,7 +48,6 @@ class PlantTrackerViewModel(
             } else {
                 firestoreRepository.addPlant(currentPlant.copy(userId = user.uid))
             }
-           // notificationViewModel.scheduleNotification(currentPlant)
         }
     }
 

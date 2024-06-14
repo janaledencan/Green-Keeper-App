@@ -24,12 +24,7 @@ fun DropdownSelectField(
     val expanded = remember { mutableStateOf(false) }
 
     Column {
-        /* Text(
-             text = "Select Category:",
-             style = MaterialTheme.typography.bodySmall,
-             modifier = Modifier.padding(vertical = 8.dp)
-         )
- */
+
         OutlinedButton(
             onClick = { expanded.value = true },
             modifier = Modifier
